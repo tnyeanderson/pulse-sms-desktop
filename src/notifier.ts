@@ -82,10 +82,10 @@ export default class Notifier {
     });
 
     this.currentNotification.on("click", (): void => {
-      let link = "https://pulsesms.app/thread/" + conversationId;
+      let link = "http://localhost:8081/thread/" + conversationId;
 
       if (isPrivate) {
-        link = "https://pulsesms.app/passcode";
+        link = "http://localhost:8081/passcode";
       }
 
       if (this.windowProvider.getWindow() !== null) {
@@ -156,7 +156,7 @@ export default class Notifier {
           "Content-Length": Buffer.byteLength(data),
           "Content-Type": "application/json",
         },
-        hostname: "api.messenger.klinkerapps.com",
+        hostname: "localhost:5000",
         method: "POST",
         path: "/api/v1/messages/add",
       };
@@ -185,7 +185,7 @@ export default class Notifier {
           "Content-Length": Buffer.byteLength(data),
           "Content-Type": "application/json",
         },
-        hostname: "api.messenger.klinkerapps.com",
+        hostname: "localhost:5000",
         method: "POST",
         path: "/api/v1/accounts/dismissed_notification",
       };
@@ -213,7 +213,7 @@ export default class Notifier {
           "Content-Length": Buffer.byteLength(data),
           "Content-Type": "application/json",
         },
-        hostname: "api.messenger.klinkerapps.com",
+        hostname: "localhost:5000",
         method: "POST",
         path: `/api/v1/conversations/read/${conversationId}`,
       };
